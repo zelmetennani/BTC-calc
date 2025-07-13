@@ -12,7 +12,7 @@
     <section class="hero">
       <h1>Accelerate Your Financial Freedom</h1>
       <p class="subtitle">Plan your path to lasting wealth with Bitcoin. Visualize your future, test scenarios, and build a plan for permanent financial freedom.</p>
-      <a href="#calculator" class="cta-btn">Get Started</a>
+      <a href="#" class="cta-btn">Get Started</a>
     </section>
 
     <!-- Questions & Value Prop Section -->
@@ -22,13 +22,28 @@
         <li>People who use Bitcoin for their savings and are either already retired, or want a realistic path to financial freedom in the next 5-10 years.</li>
       </ul>
       <h2>Key Questions</h2>
-      <ul>
-        <li>If I retire on my Bitcoin in 2030, will I still have enough to live off 20 years later?</li>
-        <li>What would my wealth look like over time in bearish vs bullish scenarios?</li>
-        <li>Am I better off selling Bitcoin or borrowing against it?</li>
-        <li>How much should I sell during the next bull run to fund my lifestyle?</li>
-        <li>Should I try to time the next peak and buy the bear market, or just DCA?</li>
-      </ul>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">If I retire on my Bitcoin in 2030, will I still have enough to live off 20 years later?</button>
+          <div class="faq-answer">Our tools help you project your BTC wealth and expenses year by year, so you can see if your plan is sustainable for the long term.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">What would my wealth look like over time in bearish vs bullish scenarios?</button>
+          <div class="faq-answer">You can simulate different market scenarios and see how your BTC portfolio might perform in each.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Am I better off selling Bitcoin or borrowing against it?</button>
+          <div class="faq-answer">We compare the pros and cons of selling vs borrowing, so you can make an informed decision for your situation.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">How much should I sell during the next bull run to fund my lifestyle?</button>
+          <div class="faq-answer">Our withdrawal simulator helps you plan how much to sell and when, based on your goals and market cycles.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Should I try to time the next peak and buy the bear market, or just DCA?</button>
+          <div class="faq-answer">We show you the historical impact of timing vs DCA, so you can choose the strategy that fits your risk tolerance.</div>
+        </div>
+      </div>
     </section>
 
     <!-- BTC Wealth Planning Section -->
@@ -54,124 +69,80 @@
       </div>
     </section>
 
-    <!-- Persistent Inputs Section -->
-    <section class="persistent-inputs-section">
-      <h2 class="inputs-title">Your BTC Profile</h2>
-      <form id="persistent-inputs-form" class="persistent-inputs-form">
-        <div class="persistent-inputs-row">
-          <div class="form-group">
-            <label for="profileAge">Current Age</label>
-            <input type="number" id="profileAge" min="0" required>
-          </div>
-          <div class="form-group">
-            <label for="profileRetirementAge">Desired Retirement Age</label>
-            <input type="number" id="profileRetirementAge" min="0" required>
-          </div>
+    <!-- BTC Profile Stepper Section -->
+    <section class="btc-profile-section">
+      <div class="btc-profile-card">
+        <h2 class="btc-profile-title">Your BTC Profile</h2>
+        <div id="btc-profile-progress-bar" class="btc-profile-progress-bar">
+          <div id="btc-profile-progress-bar-inner" class="btc-profile-progress-bar-inner"></div>
         </div>
-        <button type="submit" class="profile-save-btn">Save & Continue</button>
-      </form>
-    </section>
-
-    <!-- Tool Tabs Section -->
-    <section class="tool-tabs-section" id="toolTabsSection" style="display:none;">
-      <div class="tabs-bar">
-        <button class="tab-btn active" data-tab="retirement">Retirement Calculator</button>
-        <button class="tab-btn" data-tab="goal">BTC Goal Planner</button>
-        <button class="tab-btn" data-tab="withdrawal">Withdrawal Simulator</button>
-      </div>
-      <div class="tab-content" id="tab-retirement"></div>
-      <div class="tab-content" id="tab-goal" style="display:none;"></div>
-      <div class="tab-content" id="tab-withdrawal" style="display:none;"></div>
-    </section>
-
-    <!-- Calculator Section -->
-    <section id="calculator" class="calculator-section">
-      <div class="container">
-        <h2>Bitcoin Retirement Calculator</h2>
-        <form id="btc-form">
-          <div class="form-group">
-            <label for="currentAge">Current Age</label>
-            <input type="number" id="currentAge" min="0" required>
-          </div>
-          <div class="form-group">
-            <label for="retirementAge">Retirement Age</label>
-            <input type="number" id="retirementAge" min="0" required>
-          </div>
-          <div class="form-group">
-            <label for="lifeExpectancy">Life Expectancy</label>
-            <input type="number" id="lifeExpectancy" min="0" required>
-          </div>
-          <div class="form-group">
-            <label for="btcHoldings">Current BTC Holdings</label>
-            <input type="number" id="btcHoldings" min="0" step="any" required>
-          </div>
-          <div class="form-group">
-            <label for="btcPrice">Current BTC Price (USD)</label>
-            <div class="input-row">
-              <input type="number" id="btcPrice" min="0" step="any" required>
-              <button type="button" class="helper-btn" id="getPriceBtn">Get Current Price</button>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="solveFor">Solve for</label>
-            <select id="solveFor" class="solve-for-select">
-              <option value="expenses">Monthly Retirement Expenses</option>
-              <option value="purchase">Monthly BTC Purchase</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="monthlyPurchase">Monthly BTC Purchase (USD)</label>
-            <div class="input-row">
-              <input type="number" id="monthlyPurchase" min="0" step="any" required>
-              <button type="button" class="helper-btn" id="growth5yrBtn">Assume last 5yr</button>
-              <button type="button" class="helper-btn" id="growth10yrBtn">Assume last 10yr</button>
-            </div>
-            <small class="helper-desc">BTC 5yr CAGR ≈ 44%, 10yr CAGR ≈ 70%</small>
-          </div>
-          <div class="form-group">
-            <label for="monthlyExpenses">Ideal Monthly Retirement Expenses (USD)</label>
-            <div class="input-row">
-              <input type="number" id="monthlyExpenses" min="0" step="any" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="btcGrowth">Expected BTC Annual Growth Rate (%)</label>
-            <div class="input-row">
-              <input type="number" id="btcGrowth" min="0" step="any" value="10" required>
-            </div>
-            <small class="helper-desc">BTC 5yr CAGR ≈ 44%, 10yr CAGR ≈ 70%</small>
-          </div>
-          <div class="form-group">
-            <label for="inflationRate">Expected Inflation Rate (%)</label>
-            <input type="number" id="inflationRate" min="0" step="any" value="2" required>
-          </div>
-          <button type="submit">Calculate</button>
+        <form id="btc-profile-form" autocomplete="off">
+          <div id="btc-profile-question" class="btc-profile-question"></div>
+          <input id="btc-profile-input" class="btc-profile-input" type="number" required />
+          <button type="submit" id="btc-profile-next" class="btc-profile-next" disabled>Next</button>
         </form>
-        <div id="results" class="results"></div>
-        <div class="graph-controls">
-          <button type="button" class="scenario-btn" data-scenario="base">Base</button>
-          <button type="button" class="scenario-btn" data-scenario="bullish">Bullish</button>
-          <button type="button" class="scenario-btn" data-scenario="bearish">Bearish</button>
-        </div>
-        <div class="graph-section">
-          <canvas id="btcChart" width="100%" height="40"></canvas>
-        </div>
       </div>
     </section>
+
+    <!-- BTC Profile Complete Card (hidden by default) -->
+    <div id="btc-profile-complete" class="btc-profile-complete-card" style="display:none;">
+      <h2 class="btc-profile-complete-title">🎉 Profile Complete!</h2>
+      <div class="btc-profile-summary-list">
+        <!-- Populated by JS -->
+      </div>
+      <div class="btc-profile-next-prompt">What do you want to figure out next?</div>
+      <div class="btc-profile-next-options">
+        <button class="btc-profile-next-btn" data-next="contribute">How much do I need to contribute?</button>
+        <button class="btc-profile-next-btn" data-next="btc-needed">How much Bitcoin will I need?</button>
+        <button class="btc-profile-next-btn" data-next="wealth">Show my projected wealth</button>
+      </div>
+    </div>
+
+    <!-- Projected Wealth Card (hidden by default) -->
+    <div id="btc-wealth-card" class="btc-wealth-card" style="display:none;">
+      <h2 class="btc-wealth-title">Projected Wealth Over Time</h2>
+      <div class="btc-wealth-scenario-toggles">
+        <label class="btc-wealth-toggle">
+          <input type="checkbox" class="btc-wealth-scenario-checkbox" data-scenario="bear" checked />
+          <span class="btc-wealth-dot bear"></span>
+          <span class="btc-wealth-label">Bear</span>
+          <input class="btc-wealth-cagr-input" data-scenario="bear" type="number" min="0" max="100" step="0.1" value="10" />% CAGR
+        </label>
+        <label class="btc-wealth-toggle">
+          <input type="checkbox" class="btc-wealth-scenario-checkbox" data-scenario="base" checked />
+          <span class="btc-wealth-dot base"></span>
+          <span class="btc-wealth-label">Base</span>
+          <input class="btc-wealth-cagr-input" data-scenario="base" type="number" min="0" max="100" step="0.1" value="20" />% CAGR
+        </label>
+        <label class="btc-wealth-toggle">
+          <input type="checkbox" class="btc-wealth-scenario-checkbox" data-scenario="bull" checked />
+          <span class="btc-wealth-dot bull"></span>
+          <span class="btc-wealth-label">Bull</span>
+          <input class="btc-wealth-cagr-input" data-scenario="bull" type="number" min="0" max="100" step="0.1" value="35" />% CAGR
+        </label>
+      </div>
+      <canvas id="btc-wealth-chart" width="600" height="320"></canvas>
+      <div class="btc-wealth-assumptions">
+        <b>Assumptions:</b> No future contributions, no withdrawals. Bear/Base/Bull scenarios use editable BTC CAGR. Starting BTC price is fetched live from <span id="btc-wealth-price-source">CoinGecko</span>.
+      </div>
+      <button id="btc-wealth-back" class="btc-wealth-back">Back</button>
+    </div>
 
     <!-- Ending Quote & CTA -->
     <div class="ending-quote">
       “Good fortune is what happens when opportunity meets with planning.”
     </div>
     <div class="ending-cta">
-      <a href="#calculator" class="cta-btn">Build your permanent wealth plan today</a>
+      <a href="#" class="cta-btn">Build your permanent wealth plan today</a>
       <a href="#" class="cta-btn" style="background:#23283a;color:#ff9900;border:1.5px solid #ff9900;">Learn more</a>
     </div>
   </div>
   <footer>
-    &copy; 2024 Stack Wisely. All rights reserved. | Not financial advice.
+    &copy; <span id="footer-year"></span> savewithbitcoin.co. All rights reserved.
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
   <script src="script.js"></script>
 </body>
 </html> 
