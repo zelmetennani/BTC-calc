@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Retirement Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="landing-container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Accelerate Your Financial Freedom</h1>
+      <p class="subtitle">Plan your path to lasting wealth with Bitcoin. Visualize your future, test scenarios, and build a plan for permanent financial freedom.</p>
+      <a href="#calculator" class="cta-btn">Get Started</a>
+    </section>
+
+    <!-- Questions & Value Prop Section -->
+    <section class="section">
+      <h2>Who It's For</h2>
+      <ul>
+        <li>People who use Bitcoin for their savings and are either already retired, or want a realistic path to financial freedom in the next 5-10 years.</li>
+      </ul>
+      <h2>Key Questions</h2>
+      <ul>
+        <li>If I retire on my Bitcoin in 2030, will I still have enough to live off 20 years later?</li>
+        <li>What would my wealth look like over time in bearish vs bullish scenarios?</li>
+        <li>Am I better off selling Bitcoin or borrowing against it?</li>
+        <li>How much should I sell during the next bull run to fund my lifestyle?</li>
+        <li>Should I try to time the next peak and buy the bear market, or just DCA?</li>
+      </ul>
+    </section>
+
+    <!-- BTC Wealth Planning Section -->
+    <section class="section">
+      <h2>BTC Wealth Planning</h2>
+      <div class="card-group">
+        <div class="card">
+          <h3>Build Your Plan</h3>
+          <p>Develop a plan that gives you financial freedom today and permanent wealth tomorrow. Battle-test your plan in bullish and bearish scenarios. Start with our templates and customize it for your goals.</p>
+        </div>
+        <div class="card">
+          <h3>Project Your Wealth</h3>
+          <p>See how your wealth grows in bullish and bearish scenarios. Use data-driven price projections so you can see when you'll likely reach your financial goals.</p>
+        </div>
+        <div class="card">
+          <h3>Master The Market Cycle</h3>
+          <p>Buy and sell confidently based on long-term market cycle indicators. We narrowed down the most useful indicators to help you quickly understand where we are in the long-term market cycle.</p>
+        </div>
+        <div class="card">
+          <h3>Hodl Wisely</h3>
+          <p>Stack Wisely goes beyond the indicators and includes access to exclusive content from Stack Hodler focused on building wealth and living well.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Persistent Inputs Section -->
+    <section class="persistent-inputs-section">
+      <h2 class="inputs-title">Your BTC Profile</h2>
+      <form id="persistent-inputs-form" class="persistent-inputs-form">
+        <div class="persistent-inputs-row">
+          <div class="form-group">
+            <label for="profileAge">Current Age</label>
+            <input type="number" id="profileAge" min="0" required>
+          </div>
+          <div class="form-group">
+            <label for="profileRetirementAge">Desired Retirement Age</label>
+            <input type="number" id="profileRetirementAge" min="0" required>
+          </div>
+        </div>
+        <button type="submit" class="profile-save-btn">Save & Continue</button>
+      </form>
+    </section>
+
+    <!-- Tool Tabs Section -->
+    <section class="tool-tabs-section" id="toolTabsSection" style="display:none;">
+      <div class="tabs-bar">
+        <button class="tab-btn active" data-tab="retirement">Retirement Calculator</button>
+        <button class="tab-btn" data-tab="goal">BTC Goal Planner</button>
+        <button class="tab-btn" data-tab="withdrawal">Withdrawal Simulator</button>
+      </div>
+      <div class="tab-content" id="tab-retirement"></div>
+      <div class="tab-content" id="tab-goal" style="display:none;"></div>
+      <div class="tab-content" id="tab-withdrawal" style="display:none;"></div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="calculator-section">
+      <div class="container">
+        <h2>Bitcoin Retirement Calculator</h2>
+        <form id="btc-form">
+          <div class="form-group">
+            <label for="currentAge">Current Age</label>
+            <input type="number" id="currentAge" min="0" required>
+          </div>
+          <div class="form-group">
+            <label for="retirementAge">Retirement Age</label>
+            <input type="number" id="retirementAge" min="0" required>
+          </div>
+          <div class="form-group">
+            <label for="lifeExpectancy">Life Expectancy</label>
+            <input type="number" id="lifeExpectancy" min="0" required>
+          </div>
+          <div class="form-group">
+            <label for="btcHoldings">Current BTC Holdings</label>
+            <input type="number" id="btcHoldings" min="0" step="any" required>
+          </div>
+          <div class="form-group">
+            <label for="btcPrice">Current BTC Price (USD)</label>
+            <div class="input-row">
+              <input type="number" id="btcPrice" min="0" step="any" required>
+              <button type="button" class="helper-btn" id="getPriceBtn">Get Current Price</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="solveFor">Solve for</label>
+            <select id="solveFor" class="solve-for-select">
+              <option value="expenses">Monthly Retirement Expenses</option>
+              <option value="purchase">Monthly BTC Purchase</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="monthlyPurchase">Monthly BTC Purchase (USD)</label>
+            <div class="input-row">
+              <input type="number" id="monthlyPurchase" min="0" step="any" required>
+              <button type="button" class="helper-btn" id="growth5yrBtn">Assume last 5yr</button>
+              <button type="button" class="helper-btn" id="growth10yrBtn">Assume last 10yr</button>
+            </div>
+            <small class="helper-desc">BTC 5yr CAGR ≈ 44%, 10yr CAGR ≈ 70%</small>
+          </div>
+          <div class="form-group">
+            <label for="monthlyExpenses">Ideal Monthly Retirement Expenses (USD)</label>
+            <div class="input-row">
+              <input type="number" id="monthlyExpenses" min="0" step="any" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="btcGrowth">Expected BTC Annual Growth Rate (%)</label>
+            <div class="input-row">
+              <input type="number" id="btcGrowth" min="0" step="any" value="10" required>
+            </div>
+            <small class="helper-desc">BTC 5yr CAGR ≈ 44%, 10yr CAGR ≈ 70%</small>
+          </div>
+          <div class="form-group">
+            <label for="inflationRate">Expected Inflation Rate (%)</label>
+            <input type="number" id="inflationRate" min="0" step="any" value="2" required>
+          </div>
+          <button type="submit">Calculate</button>
+        </form>
+        <div id="results" class="results"></div>
+        <div class="graph-controls">
+          <button type="button" class="scenario-btn" data-scenario="base">Base</button>
+          <button type="button" class="scenario-btn" data-scenario="bullish">Bullish</button>
+          <button type="button" class="scenario-btn" data-scenario="bearish">Bearish</button>
+        </div>
+        <div class="graph-section">
+          <canvas id="btcChart" width="100%" height="40"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ending Quote & CTA -->
+    <div class="ending-quote">
+      “Good fortune is what happens when opportunity meets with planning.”
+    </div>
+    <div class="ending-cta">
+      <a href="#calculator" class="cta-btn">Build your permanent wealth plan today</a>
+      <a href="#" class="cta-btn" style="background:#23283a;color:#ff9900;border:1.5px solid #ff9900;">Learn more</a>
+    </div>
+  </div>
+  <footer>
+    &copy; 2024 Stack Wisely. All rights reserved. | Not financial advice.
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html> 
